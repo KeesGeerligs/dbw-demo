@@ -44,3 +44,12 @@ Alternatively, you can use a non-local model endpoint by deploying the provided 
     *   After updating the agent configuration, run `adk web` as usual. The agent will now use your deployed Nosana endpoint.
 
 This method allows you to use more powerful models without needing local GPU resources, leveraging the decentralized compute power of the Nosana network.
+
+## Example Output
+
+Here is an example of the agent in action:
+
+![Agent Output Screenshot](image.png)
+
+
+
