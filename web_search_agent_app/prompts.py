@@ -32,11 +32,8 @@ def return_stage_instructions() -> dict:
 
 def dynamic_instruction_provider(context: ToolContext) -> str:
     """Provides dynamic instructions to the agent based on the workflow stage.
-       This context is read-only for state modification here, but new_message is available.
     """
-    # Read the current stage from state - no state modification
     stage = context.state.get("workflow_stage", INITIAL_STAGE)
-    # user_new_message = context.new_message # new_message can be accessed here if needed for logic not involving state mutation
     
     all_instructions = return_stage_instructions()
     

@@ -1,0 +1,27 @@
+{
+    "ops": [
+      {
+        "id": "qwen-reasoning",
+        "args": {
+          "cmd": [
+            "/bin/sh",
+            "-c",
+            "vllm serve Qwen/Qwen3-8B --enable-reasoning --reasoning-parser deepseek_r1 --enable-auto-tool-choice --tool-call-parser hermes --served-model-name Qwen3-8B --port 9000 --max-model-len 4960"
+          ],
+          "gpu": true,
+          "image": "docker.io/vllm/vllm-openai:v0.8.5",
+          "expose": 9000,
+          "entrypoint": []
+        },
+        "type": "container/run"
+      }
+    ],
+    "meta": {
+      "trigger": "dashboard",
+      "system_requirements": {
+        "required_vram": 16
+      }
+    },
+    "type": "container",
+    "version": "0.1"
+  }
