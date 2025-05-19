@@ -2,27 +2,109 @@
 
 This guide explains how to set up and run the Web Search Agent application.
 
-## Setting up the Web Search Agent
+## Setup local machine
 
-First, install Ollama from [https://ollama.com/](https://ollama.com/) and ensure it is running.
+### Prerequisites
+
+Ensure you have the following installed on your local machine:
+
+-   Python 3.8 or higher
+-   Ollama (for local model serving)
+
+### Install Python
+
+If you don't have Python installed, you can download it from the [official Python website](https://www.python.org/downloads/).
+
+Make sure to add Python to your system's PATH during installation.
+You can verify the installation by running:
+
+```bash
+python --version
+```
+
+This should display the version of Python installed on your system.
+
+### Install Ollama
+
+Ollama is a local model serving tool. You can install it by following the instructions on the [Ollama website](https://ollama.com/download).
+
+Once installed, you can verify the installation by running:
+
+```bash
+ollama --version
+```
+
+This should display the version of Ollama installed on your system.
+
+## Setup the Web Search Agent
+
+### Clone the Repository
+
+Clone the repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/KeesGeerligs/dbw-demo
+```
+
+### Install Python Dependencies
+
+Navigate to the cloned repository directory:
+```bash
+# Create Virtual Environment
+python -m venv .venv
+```
+
+Then activate the virtual environment:
+```bash
+# macOS/Linux
+source .venv/bin/activate
+
+# Windows CMD
+.venv\Scripts\activate.bat
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
+
+Install the required Python packages using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+Validate the installation by running:
+
+```bash
+adk --help
+```
+
+This should display the available commands and options for the ADK (Agent Development Kit).
+
+
+## Setting up the Web Search Agent with Ollama (Local Model)
+
+> [!NOTE] 
+> Lightweight: Mistral Small 3.1 can run on a single RTX 4090 or a Mac with 32GB RAM. This makes it a great fit for on-device use cases. If you don't have a powerful GPU or a Mac with 32GB RAM, you can host powerful models on the Nosana network (see below).
 
 Next, pull the required language model via your terminal:
 ```bash
 ollama pull mistral-small3.1
 ```
 
-Then, install the Python dependencies for the agent:
-```bash
-pip install -r requirements.txt
+In the `web_search_agent_app/agent.py` file, set the `api_base_url` and `model_name_at_endpoint` variables to match your local Ollama setup:
+
+```python
+# Ollama local
+api_base_url = "http://localhost:11434"
+model_name_at_endpoint = "ollama_chat/mistral-small3.1"
 ```
 
 Finally, run the agent application using the ADK web interface:
 ```bash
 adk web
 ```
-If your Ollama server is not running at `http://localhost:11434`, you will need to set the `OLLAMA_API_BASE` environment variable to the correct address before running `adk web`.
 
-Once `adk web` is active, open your browser to the displayed URL `http://localhost:8000`
+Once `adk web` is active, open your browser to the displayed URL `http://localhost:8000` to interact with the agent.
 
 ## Using a Non-Local Endpoint (Nosana)
 
