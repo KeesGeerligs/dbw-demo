@@ -74,12 +74,13 @@ def handle_new_message(state: dict, message_text: str) -> dict:
 
 
 # Ollama local
-api_base_url = "http://localhost:11434"
-model_name_at_endpoint = "ollama_chat/mistral-small3.1"
+# api_base_url = "http://localhost:11434"
+# model_name_at_endpoint = "ollama_chat/mistral-small3.1"
 
 # VLLM
-#api_base_url = "https://5pfjqnuugf2pisgegm9ly7pon7xwcsxppx17emweszvf.node.k8s.prd.nos.ci/v1"
-#model_name_at_endpoint = "openai/Qwen3-8B"
+api_base_url = "https://ejesl8ljrjmjvrwalhflzkzszgfqqkd7153vcr33cura.node.k8s.prd.nos.ci/v1"
+model_name_at_endpoint = "openai/Qwen3-8B"
+
 
 root_agent = Agent(
     model=LiteLlm(
